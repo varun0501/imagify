@@ -1,4 +1,5 @@
 var express = require("express");
+const PORT = process.env.PORT || 5000;
 
 var app = express();
 
@@ -20,6 +21,6 @@ app.get("/random/:min/:max", function (req, res) {
   });
 });
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log("App started on port 3000");
 });
