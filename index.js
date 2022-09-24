@@ -21,6 +21,11 @@ app.get("/random/:min/:max", function (req, res) {
   });
 });
 
+app.get("/randomSvg", function (req, res, next) {
+  res.setHeader("Content-Type", "image/svg+xml");
+  res.sendFile(__dirname + "/generatedImages/test.svg");
+});
+
 app.listen(PORT, function () {
-  console.log("App started on port 3000");
+  console.log("App started on port " + PORT);
 });
