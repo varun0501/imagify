@@ -21,9 +21,9 @@ app.get("/random/:min/:max", function (req, res) {
   });
 });
 
-app.get("/randomSvg", function (req, res, next) {
+app.get("/dummy", function (req, res, next) {
   res.setHeader("Content-Type", "image/svg+xml");
-  res.sendFile(__dirname + "/generatedImages/test.svg");
+  res.sendFile(__dirname + "/generatedImages/dummy.svg");
 });
 
 app.listen(PORT, function () {
