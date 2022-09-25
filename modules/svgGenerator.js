@@ -13,7 +13,7 @@ module.exports = class SvgGenerator {
 
   generate() {
     var svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${this.props.width}" height="${this.props.height}">
-        <foreignObject width="100%" height="100%" style="background-image:linear-gradient(to right, #ff6e7f, #bfe9ff);">
+        <foreignObject width="100%" height="100%" style="background-color: #d6d6d6;">
           <div xmlns="http://www.w3.org/1999/xhtml" style="font-size: 40px">
             <span style="color: white; text-shadow: 0 0 2px blue">${this.props.width}x${this.props.height}</span>
           </div>
