@@ -1,4 +1,5 @@
 var express = require("express");
+var SvgGenerator = require("./modules/svgGenerator");
 const PORT = process.env.PORT || 5000;
 
 var app = express();
@@ -21,9 +22,24 @@ app.get("/random/:min/:max", function (req, res) {
   });
 });
 
-app.get("/dummy", function (req, res, next) {
+app.get("/draw/:width/:height", function (req, res) {
+  var height = parseInt(req.params.height);
+  var width = parseInt(req.params.width);
   res.setHeader("Content-Type", "image/svg+xml");
-  res.sendFile(__dirname + "/generatedImages/dummy.svg");
+  var svg = new SvgGenerator({
+    height: height,
+    width: width,
+  });
+  var success = svg.generate();
+  if (success) {
+    res.sendFile(__dirname + "/generatedImages/generated.svg");
+  } else {
+    res.status(500);
+    res.json({
+      error: "Unable to generate Svg",
+    });
+    return;
+  }
 });
 
 app.listen(PORT, function () {
